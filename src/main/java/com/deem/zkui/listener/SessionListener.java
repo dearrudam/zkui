@@ -28,22 +28,23 @@ import org.slf4j.LoggerFactory;
 @WebListener
 public class SessionListener implements HttpSessionListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(SessionListener.class);
+	private static final Logger logger = LoggerFactory.getLogger(SessionListener.class);
 
-    @Override
-    public void sessionCreated(HttpSessionEvent event) {
-        logger.trace("Session created");
-    }
+	@Override
+	public void sessionCreated(HttpSessionEvent event) {
+		logger.trace("Session created");
+	}
 
-    @Override
-    public void sessionDestroyed(HttpSessionEvent event) {
-        try {
-            ZooKeeper zk = (ZooKeeper) event.getSession().getAttribute("zk");
-            zk.close();
-            logger.trace("Session destroyed");
-        } catch (InterruptedException ex) {
-            logger.error(Arrays.toString(ex.getStackTrace()));
-        }
-    }
+	@Override
+	public void sessionDestroyed(HttpSessionEvent event) {
+		try {
+			ZooKeeper zk = (ZooKeeper) event.getSession().getAttribute("zk");
+			if (zk != null)
+				zk.close();
+			logger.trace("Session destroyed");
+		} catch (InterruptedException ex) {
+			logger.error(Arrays.toString(ex.getStackTrace()));
+		}
+	}
 
 }

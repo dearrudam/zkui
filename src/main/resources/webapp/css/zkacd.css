@@ -69,3 +69,26 @@ table td { word-wrap: break-word; }
 code {
     font-size: 80%;
 }
+
+/*
+changed by marruda@opentext.com
+*/
+textarea#newValue {
+    height: 500px;
+    width: 100%;
+    resize: both;
+	font-size:10px;
+}
+
+
+table tr td a{
+	font-size:14px;
+}
+
+table.showContent {
+	font-size:14px;
+}
+
+table.showContent tr td{
+	font-size:14px;
+}

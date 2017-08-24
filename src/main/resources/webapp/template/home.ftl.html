@@ -33,11 +33,9 @@
                     <#assign breadCrumbPath = ""> 
                     <#if breadCrumbLst?has_content>
                     <#list breadCrumbLst as breadCrumb>
-
-                    <#if breadCrumb != "">
+				    <#if breadCrumb != "">
                     <#assign breadCrumbPath = breadCrumbPath + "/" +  breadCrumb> 
                     </#if>
-
                     <li><a href="/home?zkPath=${breadCrumbPath}" class="breadcrumb-select">${breadCrumb}</a></li>
                     </#list>
                     <#else>
@@ -67,7 +65,7 @@
                         <tr>
                             <th style="width: 4%"></th>
                             <th>Name</th>
-                            <th>Value</th>
+<!--                             <th>Value</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -87,15 +85,15 @@
                                 ${leaf.name}
                                 </#if>
                             </td>
-                            <#if navigate?? && navigate == 'true'>
-                            <td><a href="/home?zkPath=${leaf.strValue}">${leaf.strValue}</a></td>
-                            <#else>
-                            <td>
-                                <#if leaf.value??>
-                                ${leaf.strValue?html}
-                                </#if>
-                            </td>
-                            </#if>
+<!--                             <#if navigate?? && navigate == 'true'> -->
+<!--                             <td><a href="/home?zkPath=${leaf.strValue}">${leaf.strValue}</a></td> -->
+<!--                             <#else> -->
+<!--                             <td> -->
+<!--                                 <#if leaf.value??> -->
+<!--                                 ${leaf.strValue?html} -->
+<!--                                 </#if> -->
+<!--                             </td> -->
+<!--                             </#if> -->
 
                         </tr>
                         </#list>
@@ -159,7 +157,7 @@
 
                 <!-- Add Property Modal -->
                 <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-editor">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -171,7 +169,7 @@
                                     <input type="text" id="newProperty"  name="newProperty" class="form-control" placeholder="name">
                                 </div>
                                 <br/>
-                                <div class="input-group input-group-lg">
+                                <div class="input-group input-group-lg input-value">
                                     <span class="input-group-addon">Value</span>
                                     <textarea id="newValue" name="newValue" class="form-control" placeholder="value" style="resize:vertical;" ></textarea>
                                 </div>
@@ -186,7 +184,7 @@
                 </div>
 
                 <!-- Delete Property Modal -->
-                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade modal-alarm" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
